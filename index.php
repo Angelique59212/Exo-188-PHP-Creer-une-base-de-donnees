@@ -1,4 +1,6 @@
 <?php
+require 'Config.php';
+require 'Connect.php';
 
 /**
  * 1. A l'aide de PhpMyAdmin
@@ -23,19 +25,26 @@
 // TODO Votre code ici bas.
 
 try {
-    $maConnexion = ........
+    $maConnexion = Connect::dbConnect();
+
 
     $request = "
-        Ma super requête SQL pour créer une base de données.
+        CREATE DATABASE intro_sql
     ";
 
-    $maConnexion->une super méthode pour exécuter ma requete
+    $maConnexion->exec($request);
 
     echo "La base de données intro_sql a bien été créée.";
 }
 catch (PDOException $exception) {
     echo $exception->getMessage();
 }
+
+//$request = 'DROP DATABASE intro_sql';
+//$maConnexion->exec($request);
+//echo "La base de données intro_sql a bien été supprimé.";
+
+
 
 
 
